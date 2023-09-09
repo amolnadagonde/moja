@@ -1,13 +1,433 @@
-body {
+* {
+  box-sizing: border-box;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.slide-in {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: #333;
+  transform-origin: left;
+}
+.slide-out {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: #333;
+  transform-origin: left;
+}
+
+/*
+
+*/
+.white-text {
+  color: #fff;
+}
+.page-title {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-size: 46px;
+    line-height: 69px;
+    font-weight: bold;
+    margin-bottom: 32px;
+}
+.landing-page-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #dad0c4;
+  padding: 80px 20px; 
+  margin: 0 auto;
+  border: 15px solid #eeebeb;
+}
+@media screen and (min-width: 960px){
+  .landing-page-container {
+    width: 700px;
+    height: 700px;
+    border-radius: 50%;
+  }  
+}
+.name-input {
+  border: none;
+  border-bottom: 1px solid #333;
+  background: none;
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-size: 36px;
+  width: 200px;
+  text-align: center;
+  text-transform: uppercase;
+  margin-bottom: 32px;
+}
+.name-input:active, .name-input:focus-visible {
+  border: none;
+  border-bottom: 1px solid #333;
+  background: none;
+  outline: none;
+}
+.gender-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.gender-item {
+  display: flex;
+  flex-direction: column;
+  margin: 24px;
+}
+.gender-item input {
+  margin-top: 40px;
+}
+.gender-item img{
+  transform: scale(1.5);
+  border-radius: 40px;
+}
+.login-btn {
+  width: 200px;
+  background-color: #edebeb;
+  padding: 16px;
+  border: 4px solid #fff;
+  margin-top: 16px;
+  border-radius: 40px;
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-size: 20px;
+}
+.login-btn:hover {
+  outline: none;
+  cursor: pointer;
+  background-color: #dad0c4;
+  color: #fff;
+}
+.login-btn:disabled {
+  background: #ccc;
+  color: #ddd;
+}
+.login-btn:disabled:hover {
+  background: #ccc;
+  color: #ddd;
+  cursor: not-allowed;
+}
+
+.question-container,
+.text-center {
+  text-align: center;
+}
+.question-answer-container {
+  position: relative;
+  padding-bottom: 60px;
+}
+.score-title {
+  font-size: 28px;
+  font-family: 'Bricolage Grotesque', sans-serif;
+  margin-bottom: 32px;
+}
+.question-number {
+  font-family: Arial, Helvetica, sans-serif;
+  margin-bottom: 22px;
+}
+
+.loader {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  z-index: 9;
+}
+.icon-list {
+  display: flex;
+  justify-content: space-evenly;
+  width: 80%;
+  flex-wrap: wrap;
+  margin: 0 auto 32px auto;
+  padding: 0;
+}
+@media screen and (min-width: 720px){
+  .icon-list {
+    width : 50%;
+  }  
+}
+@media screen and (min-width: 1240px){
+  .icon-list {
+    width : 35%;
+  }  
+}
+
+.list-item {
+  list-style: none;
+  padding: 24px;
+  position: relative;
+  cursor: pointer;
+}
+.list-item svg {
+  font-size: 82px;
+}
+@media screen and (min-width: 1240px){
+  .list-item svg{
+    font-size: 12vh;
+  }  
+}
+.list-item-count {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.item-clicked .list-item-count {
+  font-family: Arial, sans-serif;
+  background-color: #333;
+  padding-top: 1px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  color: #fff;
+  text-align: center;
+}
+.option-list {
+  margin-top: 32px;
+  padding: 0 40px;
+}
+@media screen and (min-width: 640px){
+  .option-list {
+    width: 50%;
+    padding: 0;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+  }  
+}
+@media screen and (min-width: 1240px){
+  .option-list {
+    width: 30%;
+    
+  }  
+}
+.option-item {
+  border-radius: 40px;
+  background: #dedede;
+  padding: 16px;
+  border: 5px solid #e9e9e9;
+  text-align: center;
+  transition: all ease 350ms;
+  margin-bottom: 20px;
+  font-size: 28px;
+  font-family: 'Bricolage Grotesque', sans-serif;
+}
+@media screen and (min-width: 960px){
+  .option-item {
+    font-size: 32px;
+  }  
+}
+.option-item:hover {
+  /* border: 5px solid #ffa557; */
+  background-color: #8c8c8c;
+  cursor: pointer;
+  color: #fff;
+}
+@media screen and (min-width: 640px){
+  .option-item {
+    width: 45%;
+    display: flex;
+    justify-content: space-evenly;
+  }
+}
+.option-item.selected {
+  background-color: #8c8c8c;
+  color: #fff;
+}
+.option-item.green {
+  /* border-color: green;
+  background-image: none;
+  background-color: #9cdbbe; */
+  background-image: linear-gradient(to right, #9fffb9 , #1cd000);
+  border-color: #1cd000;
+}
+.option-item.selected.red {
+  background-image: linear-gradient(to right, #ffbaba , #ff5050);
+  border-color: #ff5050;
+}
+
+.btn {
+  display: inline-block;
+  margin-top: 32px;
+  border-radius: 40px;
+  /* background-image: linear-gradient(to right, #7aaefd, #4cb3ea); */
+  background-color: #e6e6e6;
+  padding: 16px;
+  border: 5px solid #d6d6d6;
+  text-align: center;
+  transition: all ease 350ms;
+  min-width: 220px;
+  font-size: 26px;
+  text-transform: uppercase;
+  color: #333;
+}
+.btn:hover {
+  cursor: pointer;
+  /* background-image: linear-gradient(to right, #4c55ea , #00098f); */
+  background-color: #333;
+  color: #fcfcfc;
+}
+
+.score-board-page {
+  background-color: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.highlighted-score {
+  font-size: 48px;
+}
+
+/* score board animation */
+@keyframes firework {
+  0% { transform: translate(var(--x), var(--initialY)); width: var(--initialSize); opacity: 1; }
+  50% { width: 0.5vmin; opacity: 1; }
+  100% { width: var(--finalSize); opacity: 0; }
+}
+
+/* @keyframes fireworkPseudo {
+  0% { transform: translate(-50%, -50%); width: var(--initialSize); opacity: 1; }
+  50% { width: 0.5vmin; opacity: 1; }
+  100% { width: var(--finalSize); opacity: 0; }
+}
+ */
+.firework,
+.firework::before,
+.firework::after
+{
+  --initialSize: 0.5vmin;
+  --finalSize: 45vmin;
+  --particleSize: 0.2vmin;
+  --color1: yellow;
+  --color2: khaki;
+  --color3: white;
+  --color4: lime;
+  --color5: gold;
+  --color6: mediumseagreen;
+  --y: -30vmin;
+  --x: -50%;
+  --initialY: 60vmin;
+  content: "";
+  animation: firework 2s infinite;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, var(--y));
+  width: var(--initialSize);
+  aspect-ratio: 1;
+  background: 
+    /*
+    radial-gradient(circle, var(--color1) var(--particleSize), #0000 0) 0% 0%,
+    radial-gradient(circle, var(--color1) var(--particleSize), #0000 0) 100% 0%,
+    radial-gradient(circle, var(--color1) var(--particleSize), #0000 0) 100% 100%,
+    radial-gradient(circle, var(--color1) var(--particleSize), #0000 0) 0% 100%,
+    */
+    
+    radial-gradient(circle, var(--color1) var(--particleSize), #0000 0) 50% 0%,
+    radial-gradient(circle, var(--color2) var(--particleSize), #0000 0) 100% 50%,
+    radial-gradient(circle, var(--color3) var(--particleSize), #0000 0) 50% 100%,
+    radial-gradient(circle, var(--color4) var(--particleSize), #0000 0) 0% 50%,
+    
+    /* bottom right */
+    radial-gradient(circle, var(--color5) var(--particleSize), #0000 0) 80% 90%,
+    radial-gradient(circle, var(--color6) var(--particleSize), #0000 0) 95% 90%,
+    radial-gradient(circle, var(--color1) var(--particleSize), #0000 0) 90% 70%,
+    radial-gradient(circle, var(--color2) var(--particleSize), #0000 0) 100% 60%,
+    radial-gradient(circle, var(--color3) var(--particleSize), #0000 0) 55% 80%,
+    radial-gradient(circle, var(--color4) var(--particleSize), #0000 0) 70% 77%,
+    
+    /* bottom left */
+    radial-gradient(circle, var(--color5) var(--particleSize), #0000 0) 22% 90%,
+    radial-gradient(circle, var(--color6) var(--particleSize), #0000 0) 45% 90%,
+    radial-gradient(circle, var(--color1) var(--particleSize), #0000 0) 33% 70%,
+    radial-gradient(circle, var(--color2) var(--particleSize), #0000 0) 10% 60%,
+    radial-gradient(circle, var(--color3) var(--particleSize), #0000 0) 31% 80%,
+    radial-gradient(circle, var(--color4) var(--particleSize), #0000 0) 28% 77%,
+    radial-gradient(circle, var(--color5) var(--particleSize), #0000 0) 13% 72%,
+    
+    /* top left */
+    radial-gradient(circle, var(--color6) var(--particleSize), #0000 0) 80% 10%,
+    radial-gradient(circle, var(--color1) var(--particleSize), #0000 0) 95% 14%,
+    radial-gradient(circle, var(--color2) var(--particleSize), #0000 0) 90% 23%,
+    radial-gradient(circle, var(--color3) var(--particleSize), #0000 0) 100% 43%,
+    radial-gradient(circle, var(--color4) var(--particleSize), #0000 0) 85% 27%,
+    radial-gradient(circle, var(--color5) var(--particleSize), #0000 0) 77% 37%,
+    radial-gradient(circle, var(--color6) var(--particleSize), #0000 0) 60% 7%,
+    
+    /* top right */
+    radial-gradient(circle, var(--color1) var(--particleSize), #0000 0) 22% 14%,
+    radial-gradient(circle, var(--color1) var(--particleSize), #0000 0) 45% 20%,
+    radial-gradient(circle, var(--color1) var(--particleSize), #0000 0) 33% 34%,
+    radial-gradient(circle, var(--color1) var(--particleSize), #0000 0) 10% 29%,
+    radial-gradient(circle, var(--color1) var(--particleSize), #0000 0) 31% 37%,
+    radial-gradient(circle, var(--color1) var(--particleSize), #0000 0) 28% 7%,
+    radial-gradient(circle, var(--color1) var(--particleSize), #0000 0) 13% 42%
+    ;
+  background-size: var(--initialSize) var(--initialSize);
+  background-repeat: no-repeat;
+}
+
+.firework::before {
+  --x: -50%;
+  --y: -50%;
+  --initialY: -50%;
+/*   transform: translate(-20vmin, -2vmin) rotate(40deg) scale(1.3) rotateY(40deg); */
+  transform: translate(-50%, -50%) rotate(40deg) scale(1.3) rotateY(40deg);
+/*   animation: fireworkPseudo 2s infinite; */
+}
+
+.firework::after {
+  --x: -50%;
+  --y: -50%;
+  --initialY: -50%;
+/*   transform: translate(44vmin, -50%) rotate(170deg) scale(1.15) rotateY(-30deg); */
+  transform: translate(-50%, -50%) rotate(170deg) scale(1.15) rotateY(-30deg);
+/*   animation: fireworkPseudo 2s infinite; */
+}
+
+.firework:nth-child(2) {
+  --x: 30vmin;
+}
+
+.firework:nth-child(2),
+.firework:nth-child(2)::before,
+.firework:nth-child(2)::after {
+  --color1: pink;
+  --color2: violet;
+  --color3: fuchsia;
+  --color4: orchid;
+  --color5: plum;
+  --color6: lavender;  
+  --finalSize: 40vmin;
+  left: 30%;
+  top: 60%;
+  animation-delay: -0.25s;
+}
+
+.firework:nth-child(3) {
+  --x: -30vmin;
+  --y: -50vmin;
+}
+
+.firework:nth-child(3),
+.firework:nth-child(3)::before,
+.firework:nth-child(3)::after {
+  --color1: cyan;
+  --color2: lightcyan;
+  --color3: lightblue;
+  --color4: PaleTurquoise;
+  --color5: SkyBlue;
+  --color6: lavender;
+  --finalSize: 35vmin;
+  left: 70%;
+  top: 60%;
+  animation-delay: -0.4s;
 }

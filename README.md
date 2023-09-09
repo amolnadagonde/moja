@@ -1,3 +1,15 @@
+// About the App
+Kid will enter his/her name and gender (will be saved in session storage)
+And press on start button
+This will take him to the questions screen where there will be a question and 4 options for it
+Kid should select an option from the four and click on submit
+This will show the kid if the selected option is correct or wrong
+If the answer is correct it should add 10 points to total score and
+If the answer is wrong it should not add 10 points to the total score
+Then the next question button should appear for getting next question
+After 20 questions the finish button should appear
+On clicking finish button it should show the total score of kid and his last 3 games score
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
