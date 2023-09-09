@@ -15,7 +15,7 @@ const QuestionsPage = () => {
   const { userName } = useSelector((state) => state.user);
   const { totalScore } = useSelector((state) => state.score);
   const [randomNumberArray, setRandomNumberArray] = useState(
-    getRandomArray(2, 10)
+    getRandomArray(10, 10)
   );
   const [randomNumber, setRandomNumber] = useState(randomNumberArray[0]);
   const [randomNumberIndex, setRandomNumberIndex] = useState(0);
